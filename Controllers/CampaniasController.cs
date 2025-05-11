@@ -19,10 +19,29 @@ namespace CampaniasCRUD_NET9.Controllers
         }
 
         // GET: Campanias
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? busqueda)
         {
+            if (!string.IsNullOrEmpty(busqueda))
+            {
+                var resultado = await _context.Campanias
+                    .FirstOrDefaultAsync(c => c.Campania.ToLower() == busqueda.ToLower());
+
+                if (resultado != null)
+                {
+                    ViewBag.CampaniaEncontradaId = resultado.Id;
+                    return View(await _context.Campanias.ToListAsync());
+                }
+                else
+                {
+                    ViewBag.NoEncontrado = true;
+                }
+            }
+
             return View(await _context.Campanias.ToListAsync());
         }
+
+        
+
 
         // GET: Campanias/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -67,18 +86,16 @@ namespace CampaniasCRUD_NET9.Controllers
         // GET: Campanias/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            if (id == null) return NotFound();
 
-            var campanias = await _context.Campanias.FindAsync(id);
-            if (campanias == null)
-            {
-                return NotFound();
-            }
-            return View(campanias);
+            var campania = await _context.Campanias.FindAsync(id);
+            if (campania == null) return NotFound();
+
+            return PartialView("Edit", campania); // SIN GUIONES BAJOS NI _EditPartial
         }
+
+
+
 
         // POST: Campanias/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.

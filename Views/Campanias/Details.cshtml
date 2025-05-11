@@ -1,222 +1,121 @@
 ﻿@model CampaniasCRUD_NET9.Models.Campanias
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles de campaña";
 }
 
-<h1>Details</h1>
+<div class="card shadow mb-4">
+    <div class="card-header py-3 bg-dark">
+        <h5 class="m-0 text-white">Detalles de la campaña: <strong class="bg-secondary px-2 rounded">@Model.Campania</strong></h5>
+    </div>
 
-<div>
-    <h4>Campanias</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Campania)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Campania)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CampaniaPOM)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CampaniaPOM)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ListaPOM)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ListaPOM)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Tenant)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Tenant)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Operacion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Operacion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Tipo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Tipo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ANI)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ANI)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DNIS)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DNIS)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Skill)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Skill)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.VDN)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.VDN)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Extension)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Extension)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Agente)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Agente)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UCID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UCID)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UUI)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UUI)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Guion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Guion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Observaciones)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Observaciones)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cliente)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cliente)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Tipificacion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Tipificacion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CTI)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CTI)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Historico)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Historico)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EtiquetaWFO)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EtiquetaWFO)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CierrePOM)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CierrePOM)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ActualizaPOM)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ActualizaPOM)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Habilitado)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Habilitado)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ACWTime)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ACWTime)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SkillPrincipal)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SkillPrincipal)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SkillSecundario)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SkillSecundario)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TextoGuion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TextoGuion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Coleccion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Coleccion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CampoId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CampoId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CampoTelefono)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CampoTelefono)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CampaignPOMID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CampaignPOMID)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ContactListID)
-        </dt>
-        <dd class = "col-sm-10">    
-            @Html.DisplayFor(model => model.ContactListID)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StrategyID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StrategyID)
-        </dd>
-    </dl>
+    <div class="card-body bg-dark text-white">
+        <div class="table-responsive">
+            <table class="table table-dark table-bordered table-hover">
+                <tbody>
+                    <tr><th>Campania</th><td>@Model.Campania</td></tr>
+                    <tr><th>CampaniaPOM</th><td>@Model.CampaniaPOM</td></tr>
+                    <tr><th>ListaPOM</th><td>@Model.ListaPOM</td></tr>
+                    <tr><th>Tenant</th><td>@Model.Tenant</td></tr>
+                    <tr><th>Operacion</th><td>@Model.Operacion</td></tr>
+                    <tr><th>Tipo</th><td>@Model.Tipo</td></tr>
+                    <tr><th>ANI</th><td>@Model.ANI</td></tr>
+                    <tr><th>DNIS</th><td>@Model.DNIS</td></tr>
+                    <tr><th>Skill</th><td>@Model.Skill</td></tr>
+                    <tr><th>VDN</th><td>@Model.VDN</td></tr>
+                    <tr><th>Extension</th><td>@Model.Extension</td></tr>
+                    <tr><th>Agente</th><td>@Model.Agente</td></tr>
+                    <tr><th>UCID</th><td>@Model.UCID</td></tr>
+                    <tr><th>UUI</th><td>@Model.UUI</td></tr>
+                    <tr><th>Guion</th><td>@Model.Guion</td></tr>
+                    <tr><th>Observaciones</th><td>@Model.Observaciones</td></tr>
+                    <tr><th>Cliente</th><td>@Model.Cliente</td></tr>
+                    <tr><th>Tipificacion</th><td>@Model.Tipificacion</td></tr>
+                    <tr><th>CTI</th><td>@Model.CTI</td></tr>
+                    <tr><th>Historico</th><td>@Model.Historico</td></tr>
+                    <tr><th>EtiquetaWFO</th><td>@Model.EtiquetaWFO</td></tr>
+                    <tr><th>CierrePOM</th><td>@Model.CierrePOM</td></tr>
+                    <tr><th>ActualizaPOM</th><td>@Model.ActualizaPOM</td></tr>
+                    <tr><th>Habilitado</th><td>@Model.Habilitado</td></tr>
+                    <tr><th>ACWTime</th><td>@Model.ACWTime</td></tr>
+                    <tr><th>SkillPrincipal</th><td>@Model.SkillPrincipal</td></tr>
+                    <tr><th>SkillSecundario</th><td>@Model.SkillSecundario</td></tr>
+                    <tr>
+                        <th>TextoGuion</th>
+                        <td>
+                            <button class="btn btn-outline-info btn-sm" onclick="mostrarTextoGuion()">Ver contenido</button>
+                        </td>
+                    </tr>
+                    <tr><th>Coleccion</th><td>@Model.Coleccion</td></tr>
+                    <tr><th>CampoId</th><td>@Model.CampoId</td></tr>
+                    <tr><th>CampoTelefono</th><td>@Model.CampoTelefono</td></tr>
+                    <tr><th>CampaignPOMID</th><td>@Model.CampaignPOMID</td></tr>
+                    <tr><th>ContactListID</th><td>@Model.ContactListID</td></tr>
+                    <tr><th>StrategyID</th><td>@Model.StrategyID</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-4">
+            <button type="button" class="btn btn-warning" onclick="abrirModalEditar(@Model.Id)">
+                <i class="fas fa-edit"></i> Editar
+            </button>
+            <a href="@Url.Action("Index", "Campanias")" class="btn btn-secondary ml-2">
+                <i class="fas fa-arrow-left"></i> Volver al listado
+            </a>
+
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+
+<!-- Modal de TextoGuion -->
+<div class="modal fade" id="modalTextoGuion" tabindex="-1" role="dialog" aria-labelledby="modalTextoGuionLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTextoGuionLabel">Texto del Guión</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <pre style="white-space: pre-wrap; color: white;">@Model.TextoGuion</pre>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+<!-- Modal dinámico para edición -->
+<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditarLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalEditarLabel">Editar campaña</h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="contenidoModalEditar">
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Contenido AJAX -->
+@section Scripts {
+    <script>
+        function mostrarTextoGuion() {
+            $('#modalTextoGuion').modal('show');
+        }
+
+        function abrirModalEditar(id) {
+            $('#contenidoModalEditar').load('/Campanias/Edit/' + id, function () {
+                $('#modalEditar').modal('show');
+            });
+        }
+    </script>
+}
