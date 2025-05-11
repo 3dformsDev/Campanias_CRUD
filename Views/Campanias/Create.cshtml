@@ -1,198 +1,79 @@
 ﻿@model CampaniasCRUD_NET9.Models.Campanias
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Crear campaña";
 }
 
-<h1>Create</h1>
+<div class="card shadow mb-4">
+    <div class="card-header py-3 bg-dark">
+        <h5 class="m-0 text-white">Editar campaña: <strong class="bg-secondary px-2 rounded">@Model.Campania</strong></h5>
+    </div>
 
-<h4>Campanias</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Campania" class="control-label"></label>
-                <input asp-for="Campania" class="form-control" />
-                <span asp-validation-for="Campania" class="text-danger"></span>
+    <div class="card-body bg-dark text-white">
+        <form asp-action="Edit" method="post" class="needs-validation" novalidate>
+            <div class="row">
+                @foreach (var prop in typeof(CampaniasCRUD_NET9.Models.Campanias).GetProperties())
+                {
+                    if (prop.Name != "Id")
+                    {
+                        var display = prop.GetCustomAttributes(typeof(System.ComponentModel.DataAnnotations.DisplayAttribute), false)
+                        .Cast<System.ComponentModel.DataAnnotations.DisplayAttribute>()
+                        .FirstOrDefault()?.Name ?? prop.Name;
+
+                        <div class="form-group col-md-6">
+                            <label asp-for="@prop.Name">@display</label>
+
+                            @if (prop.PropertyType == typeof(bool) || prop.PropertyType == typeof(bool?))
+                            {
+                                <div class="form-check">
+                                    <input asp-for="@prop.Name" class="form-check-input" type="checkbox" />
+                                    <label class="form-check-label" for="@prop.Name">@display</label>
+                                </div>
+                            }
+                            else
+                            {
+                                <input asp-for="@prop.Name" class="form-control" />
+                            }
+
+                            <span asp-validation-for="@prop.Name" class="text-danger"></span>
+                        </div>
+                    }
+                }
             </div>
-            <div class="form-group">
-                <label asp-for="CampaniaPOM" class="control-label"></label>
-                <input asp-for="CampaniaPOM" class="form-control" />
-                <span asp-validation-for="CampaniaPOM" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ListaPOM" class="control-label"></label>
-                <input asp-for="ListaPOM" class="form-control" />
-                <span asp-validation-for="ListaPOM" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Tenant" class="control-label"></label>
-                <input asp-for="Tenant" class="form-control" />
-                <span asp-validation-for="Tenant" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Operacion" class="control-label"></label>
-                <input asp-for="Operacion" class="form-control" />
-                <span asp-validation-for="Operacion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Tipo" class="control-label"></label>
-                <input asp-for="Tipo" class="form-control" />
-                <span asp-validation-for="Tipo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ANI" class="control-label"></label>
-                <input asp-for="ANI" class="form-control" />
-                <span asp-validation-for="ANI" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DNIS" class="control-label"></label>
-                <input asp-for="DNIS" class="form-control" />
-                <span asp-validation-for="DNIS" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Skill" class="control-label"></label>
-                <input asp-for="Skill" class="form-control" />
-                <span asp-validation-for="Skill" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="VDN" class="control-label"></label>
-                <input asp-for="VDN" class="form-control" />
-                <span asp-validation-for="VDN" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Extension" class="control-label"></label>
-                <input asp-for="Extension" class="form-control" />
-                <span asp-validation-for="Extension" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Agente" class="control-label"></label>
-                <input asp-for="Agente" class="form-control" />
-                <span asp-validation-for="Agente" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UCID" class="control-label"></label>
-                <input asp-for="UCID" class="form-control" />
-                <span asp-validation-for="UCID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UUI" class="control-label"></label>
-                <input asp-for="UUI" class="form-control" />
-                <span asp-validation-for="UUI" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Guion" class="control-label"></label>
-                <input asp-for="Guion" class="form-control" />
-                <span asp-validation-for="Guion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Observaciones" class="control-label"></label>
-                <input asp-for="Observaciones" class="form-control" />
-                <span asp-validation-for="Observaciones" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Cliente" class="control-label"></label>
-                <input asp-for="Cliente" class="form-control" />
-                <span asp-validation-for="Cliente" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Tipificacion" class="control-label"></label>
-                <input asp-for="Tipificacion" class="form-control" />
-                <span asp-validation-for="Tipificacion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CTI" class="control-label"></label>
-                <input asp-for="CTI" class="form-control" />
-                <span asp-validation-for="CTI" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Historico" class="control-label"></label>
-                <input asp-for="Historico" class="form-control" />
-                <span asp-validation-for="Historico" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EtiquetaWFO" class="control-label"></label>
-                <input asp-for="EtiquetaWFO" class="form-control" />
-                <span asp-validation-for="EtiquetaWFO" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CierrePOM" class="control-label"></label>
-                <input asp-for="CierrePOM" class="form-control" />
-                <span asp-validation-for="CierrePOM" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ActualizaPOM" class="control-label"></label>
-                <input asp-for="ActualizaPOM" class="form-control" />
-                <span asp-validation-for="ActualizaPOM" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Habilitado" /> @Html.DisplayNameFor(model => model.Habilitado)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="ACWTime" class="control-label"></label>
-                <input asp-for="ACWTime" class="form-control" />
-                <span asp-validation-for="ACWTime" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SkillPrincipal" class="control-label"></label>
-                <input asp-for="SkillPrincipal" class="form-control" />
-                <span asp-validation-for="SkillPrincipal" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SkillSecundario" class="control-label"></label>
-                <input asp-for="SkillSecundario" class="form-control" />
-                <span asp-validation-for="SkillSecundario" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TextoGuion" class="control-label"></label>
-                <input asp-for="TextoGuion" class="form-control" />
-                <span asp-validation-for="TextoGuion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Coleccion" class="control-label"></label>
-                <input asp-for="Coleccion" class="form-control" />
-                <span asp-validation-for="Coleccion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CampoId" class="control-label"></label>
-                <input asp-for="CampoId" class="form-control" />
-                <span asp-validation-for="CampoId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CampoTelefono" class="control-label"></label>
-                <input asp-for="CampoTelefono" class="form-control" />
-                <span asp-validation-for="CampoTelefono" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CampaignPOMID" class="control-label"></label>
-                <input asp-for="CampaignPOMID" class="form-control" />
-                <span asp-validation-for="CampaignPOMID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ContactListID" class="control-label"></label>
-                <input asp-for="ContactListID" class="form-control" />
-                <span asp-validation-for="ContactListID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StrategyID" class="control-label"></label>
-                <input asp-for="StrategyID" class="form-control" />
-                <span asp-validation-for="StrategyID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+
+            <div class="mt-4 d-flex justify-content-end">
+                <button type="button" class="btn btn-secondary mr-2" onclick="window.location.href='@Url.Action("Index", "Campanias")'">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+                <button type="button" class="btn btn-success" id="confirmarGuardar">
+                    <i class="fas fa-save"></i> Guardar cambios
+                </button>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            $('#confirmarGuardar').on('click', function () {
+                Swal.fire({
+                    title: '¿Guardar cambios?',
+                    text: "Esta acción actualizará la campaña en la base de datos.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#28a745',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, guardar',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $('form').submit();
+                    }
+                });
+            });
+        });
+    </script>
 }
+
