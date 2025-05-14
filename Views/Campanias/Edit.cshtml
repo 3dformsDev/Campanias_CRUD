@@ -7,147 +7,167 @@
     <h1 class="h3 mb-4 text-white">Editar Campaña</h1>
 
     <form id="editForm" asp-action="Edit" method="post">
+        <input type="hidden" id="TextoGuion" name="TextoGuion" value="@Model.TextoGuion" />
+
         <div class="row">
             <div class="col-md-6">
                 <label class="form-label">Campaña</label>
-                <input asp-for="Campania" class="form-control" />
+                <input asp-for="Campania" class="form-control" value="@Model.Campania" />
             </div>
             <div class="col-md-6">
                 <label class="form-label">Campaña POM</label>
-                <input asp-for="CampaniaPOM" class="form-control" />
+                <input asp-for="CampaniaPOM" class="form-control" value="@Model.CampaniaPOM" />
             </div>
             <div class="col-md-6">
                 <label class="form-label">Lista POM</label>
-                <input asp-for="ListaPOM" class="form-control" />
+                <input asp-for="ListaPOM" class="form-control" value="@Model.ListaPOM" />
             </div>
             <div class="col-md-6">
                 <label class="form-label">Tenant</label>
-                <input asp-for="Tenant" class="form-control" />
+                <input asp-for="Tenant" class="form-control" value="@Model.Tenant" />
             </div>
             <div class="col-md-6">
                 <label class="form-label">Operación</label>
-                <input asp-for="Operacion" class="form-control" />
+                <input asp-for="Operacion" class="form-control" value="@Model.Operacion" />
             </div>
             <div class="col-md-6">
                 <label class="form-label">Tipo</label>
-                <input asp-for="Tipo" class="form-control" />
+                <input asp-for="Tipo" class="form-control" value="@Model.Tipo" />
             </div>
 
             @* Campos Booleanos con sus labels explícitos *@
+
+
+        <div class="row">
+                <div class="col-md-6">
+                    <!-- Primera columna de checkboxes -->
             <div class="col-md-6 form-check m-2">
-                <input asp-for="ANI" class="form-check-input" type="checkbox" />
+                <input asp-for="ANI" class="form-check-input" type="checkbox" @Model.ANI ? checked : ""/>
                 <label asp-for="ANI" class="form-check-label">ANI</label>
             </div>
             <div class="col-md-6 form-check m-2">
-                <input asp-for="DNIS" class="form-check-input" type="checkbox" />
+                <input asp-for="DNIS" class="form-check-input" type="checkbox"  @Model.DNIS ? checked : ""/>
                 <label asp-for="DNIS" class="form-check-label">DNIS</label>
             </div>
             <div class="col-md-6 form-check m-2">
-                <input asp-for="Skill" class="form-check-input" type="checkbox" />
+                <input asp-for="Skill" class="form-check-input" type="checkbox" @Model.Skill ? checked : "" />
                 <label asp-for="Skill" class="form-check-label">Skill</label>
             </div>
             <div class="col-md-6 form-check m-2">
-                <input asp-for="VDN" class="form-check-input" type="checkbox" />
+                <input asp-for="VDN" class="form-check-input" type="checkbox" @Model.VDN ? checked : ""/>
                 <label asp-for="VDN" class="form-check-label">VDN</label>
             </div>
             <div class="col-md-6 form-check m-2">
-                <input asp-for="Extension" class="form-check-input" type="checkbox" />
+                <input asp-for="Extension" class="form-check-input" type="checkbox" @Model.Extension ? checked : ""/>
                 <label asp-for="Extension" class="form-check-label">Extensión</label>
             </div>
             <div class="col-md-6 form-check m-2">
-                <input asp-for="Agente" class="form-check-input" type="checkbox" />
+                <input asp-for="Agente" class="form-check-input" type="checkbox" @Model.Agente ? checked : ""/>
                 <label asp-for="Agente" class="form-check-label">Agente</label>
             </div>
             <div class="col-md-6 form-check m-2">
-                <input asp-for="UCID" class="form-check-input" type="checkbox" />
+                <input asp-for="UCID" class="form-check-input" type="checkbox" @Model.UCID ? checked : ""/>
                 <label asp-for="UCID" class="form-check-label">UCID</label>
             </div>
             <div class="col-md-6 form-check m-2">
-                <input asp-for="UUI" class="form-check-input" type="checkbox" />
+                <input asp-for="UUI" class="form-check-input" type="checkbox" @Model.UUI ? checked : ""/>
                 <label asp-for="UUI" class="form-check-label">UUI</label>
             </div>
             <div class="col-md-6 form-check m-2">
-                <input asp-for="Guion" class="form-check-input" type="checkbox" />
+                <input asp-for="Guion" class="form-check-input" type="checkbox" @Model.Guion ? checked : "" />
                 <label asp-for="Guion" class="form-check-label">Guión</label>
             </div>
+
+        </div>
+                <div class="col-md-6">
+
+                    <!-- Segunda columna de checkboxes -->
+            
             <div class="col-md-6 form-check m-2">
-                <input asp-for="Observaciones" class="form-check-input" type="checkbox" />
+                <input asp-for="Observaciones" class="form-check-input" type="checkbox" @Model.Observaciones ? checked : ""/>
                 <label asp-for="Observaciones" class="form-check-label">Observaciones</label>
             </div>
             <div class="col-md-6 form-check m-2">
-                <input asp-for="Cliente" class="form-check-input" type="checkbox" />
+                <input asp-for="Cliente" class="form-check-input" type="checkbox" @Model.Cliente ? checked : ""/>
                 <label asp-for="Cliente" class="form-check-label">Cliente</label>
             </div>
             <div class="col-md-6 form-check m-2">
-                <input asp-for="Tipificacion" class="form-check-input" type="checkbox" />
+                <input asp-for="Tipificacion" class="form-check-input" type="checkbox" @Model.Tipificacion ? checked : ""/>
                 <label asp-for="Tipificacion" class="form-check-label">Tipificación</label>
             </div>
             <div class="col-md-6 form-check m-2">
-                <input asp-for="CTI" class="form-check-input" type="checkbox" />
+                <input asp-for="CTI" class="form-check-input" type="checkbox" @Model.CTI ? checked : ""/>
                 <label asp-for="CTI" class="form-check-label">CTI</label>
             </div>
             <div class="col-md-6 form-check m-2">
-                <input asp-for="EtiquetaWFO" class="form-check-input" type="checkbox" />
+                <input asp-for="EtiquetaWFO" class="form-check-input" type="checkbox" @Model.EtiquetaWFO ? checked : ""/>
                 <label asp-for="EtiquetaWFO" class="form-check-label">Etiqueta WFO</label>
             </div>
             <div class="col-md-6 form-check m-2">
-                <input asp-for="CierrePOM" class="form-check-input" type="checkbox" />
+                <input asp-for="CierrePOM" class="form-check-input" type="checkbox" @Model.CierrePOM ? checked : ""/>
                 <label asp-for="CierrePOM" class="form-check-label">Cierre POM</label>
             </div>
             <div class="col-md-6 form-check m-2">
-                <input asp-for="ActualizaPOM" class="form-check-input" type="checkbox" />
+                <input asp-for="ActualizaPOM" class="form-check-input" type="checkbox" @Model.ActualizaPOM ? checked : ""/>
                 <label asp-for="ActualizaPOM" class="form-check-label">Actualiza POM</label>
             </div>
             <div class="col-md-6 form-check m-2">
-                <input asp-for="Habilitado" class="form-check-input" type="checkbox" />
+                <input asp-for="Habilitado" class="form-check-input" type="checkbox" @Model.Habilitado ? checked : ""/>
                 <label asp-for="Habilitado" class="form-check-label">Habilitado</label>
             </div>
+        </div>
 
             <div class="col-md-6">
                 <label class="form-label">Histórico</label>
-                <input asp-for="Historico" class="form-control" />
+                <input asp-for="Historico" class="form-control" value="@Model.Historico" />
             </div>
             <div class="col-md-6">
                 <label class="form-label">ACW Time</label>
-                <input asp-for="ACWTime" class="form-control" />
+                <input asp-for="ACWTime" class="form-control" value="@Model.ACWTime" />
             </div>
             <div class="col-md-6">
                 <label class="form-label">Skill Principal</label>
-                <input asp-for="SkillPrincipal" class="form-control" />
+                <input asp-for="SkillPrincipal" class="form-control" value="@Model.SkillPrincipal" />
             </div>
             <div class="col-md-6">
                 <label class="form-label">Skill Secundario</label>
-                <input asp-for="SkillSecundario" class="form-control" />
+                <input asp-for="SkillSecundario" class="form-control" value="@Model.SkillSecundario" />
             </div>
-            <div class="col-md-12">
-                <label class="form-label">Texto Guión</label>
-                <textarea asp-for="TextoGuion" class="form-control"></textarea>
-            </div>
+            
             <div class="col-md-6">
                 <label class="form-label">Colección</label>
-                <input asp-for="Coleccion" class="form-control" />
+                <input asp-for="Coleccion" class="form-control" value="@Model.Coleccion" />
             </div>
             <div class="col-md-6">
                 <label class="form-label">Campo ID</label>
-                <input asp-for="CampoId" class="form-control" />
+                <input asp-for="CampoId" class="form-control" value="@Model.CampoId" />
             </div>
             <div class="col-md-6">
                 <label class="form-label">Campo Teléfono</label>
-                <input asp-for="CampoTelefono" class="form-control" />
+                <input asp-for="CampoTelefono" class="form-control" value="@Model.CampoTelefono" />
             </div>
             <div class="col-md-6">
                 <label class="form-label">Campaign POM ID</label>
-                <input asp-for="CampaignPOMID" class="form-control" />
+                <input asp-for="CampaignPOMID" class="form-control" value="@Model.CampaignPOMID" />
             </div>
             <div class="col-md-6">
                 <label class="form-label">Contact List ID</label>
-                <input asp-for="ContactListID" class="form-control" />
+                <input asp-for="ContactListID" class="form-control" value="@Model.ContactListID" />
             </div>
             <div class="col-md-6">
                 <label class="form-label">Strategy ID</label>
-                <input asp-for="StrategyID" class="form-control" />
+                <input asp-for="StrategyID" class="form-control" value="@Model.StrategyID" />
             </div>
-        </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label d-block">Texto Guion</label>
+                    <button type="button" class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#modalTextoGuion">
+                        Ver contenido
+                    </button>
+                </div>
+
+                
+       
 
         <div class="mt-4">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal">Guardar</button>
@@ -155,6 +175,27 @@
         </div>
     </form>
 </div>
+
+
+<!-- Modal de Texto Guion -->
+<div class="modal fade" id="modalTextoGuion" tabindex="-1" aria-labelledby="modalTextoGuionLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTextoGuionLabel">Texto del Guion</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <textarea id="textoGuionTemporal" class="form-control" rows="12">@Model.TextoGuion</textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="guardarTextoTemporal()">Guardar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- Modal de Confirmación -->
 <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
@@ -174,3 +215,29 @@
         </div>
     </div>
 </div>
+
+
+@section Scripts {
+    <script>
+        function guardarTextoTemporal() {
+            const texto = document.getElementById("textoGuionTemporal").value;
+            document.getElementById("TextoGuion").value = texto;
+
+            // Cierra el modal manualmente
+            const modal = bootstrap.Modal.getInstance(document.getElementById('modalTextoGuion'));
+            modal.hide();
+
+            // Opcional: alerta rápida
+            Toastify({
+                text: "Texto de guion actualizado (sin guardar aún)",
+                duration: 3000,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "#28a745"
+            }).showToast();
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+}
