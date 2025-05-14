@@ -144,8 +144,8 @@
 
             <!-- Botones -->
             <div class="form-group mt-4 d-flex justify-content-between">
-                <a asp-action="Index" class="btn btn-secondary">
-                    Cancelar
+                <a href="@Url.Action("Index", "Campanias")" class="btn btn-secondary ml-2">
+                    <i class="fas fa-arrow-left"></i> Volver al listado
                 </a>
 
                 <button type="submit" class="btn btn-success" onclick="return confirm('¿Estás seguro de crear esta campaña?')">

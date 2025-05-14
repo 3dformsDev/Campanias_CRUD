@@ -123,7 +123,9 @@
 
             <div class="text-center mt-4">
                 <button type="submit" class="btn btn-danger me-2">Eliminar</button>
-                <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+                <a href="@Url.Action("Index", "Campanias")" class="btn btn-secondary ml-2">
+                    <i class="fas fa-arrow-left"></i> Volver al listado
+                </a>
             </div>
         </form>
     </div>

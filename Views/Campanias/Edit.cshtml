@@ -154,27 +154,36 @@
                 <label class="form-label">Contact List ID</label>
                 <input asp-for="ContactListID" class="form-control" value="@Model.ContactListID" />
             </div>
+
             <div class="col-md-6">
                 <label class="form-label">Strategy ID</label>
                 <input asp-for="StrategyID" class="form-control" value="@Model.StrategyID" />
             </div>
 
-                <div class="col-md-6 mb-3">
-                    <label class="form-label d-block">Texto Guion</label>
-                    <button type="button" class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#modalTextoGuion">
-                        Ver contenido
-                    </button>
-                </div>
+
+                <div class="col-md-6 mt-4">
+                    <label class="form-label">Texto Guión</label>
+                <button type="button" class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#modalTextoGuion">
+                    Ver contenido
+                </button>
+            </div>  
 
                 
        
 
         <div class="mt-4">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal">Guardar</button>
-            <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+                    <a href="@Url.Action("Index", "Campanias")" class="btn btn-secondary ml-2">
+                        <i class="fas fa-arrow-left"></i> Volver al listado
+                    </a>
         </div>
     </form>
 </div>
+
+
+
+
+
 
 
 <!-- Modal de Texto Guion -->
@@ -209,12 +218,18 @@
                 ¿Estás seguro de que deseas guardar los cambios realizados en esta campaña?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </button>
+                <a href="@Url.Action("Index", "Campanias")" class="btn btn-secondary ml-2">
+                    <i class="fas fa-arrow-left"></i> Volver al listado
+                </a>
                 <button type="button" class="btn btn-success" onclick="document.getElementById('editForm').submit();">Sí, guardar</button>
             </div>
         </div>
     </div>
 </div>
+
+
+
 
 
 @section Scripts {
