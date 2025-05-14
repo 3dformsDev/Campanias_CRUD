@@ -1,152 +1,176 @@
 ﻿@model CampaniasCRUD_NET9.Models.Campanias
-
 @{
-    ViewData["Title"] = "Editar campaña";
+    ViewData["Title"] = "Editar Campaña";
 }
 
-<div class="card shadow mb-4">
-    <div class="card-header py-3 bg-dark">
-        <h5 class="m-0 text-white">Editar campaña: <strong class="bg-secondary px-2 rounded">@Model.Campania</strong></h5>
-    </div>
+<div class="container-fluid">
+    <h1 class="h3 mb-4 text-white">Editar Campaña</h1>
 
-    <div class="card-body bg-dark text-white">
-        <form asp-action="Edit" method="post" class="needs-validation" novalidate>
-            <input type="hidden" asp-for="Id" />
-            <div class="row">
-                <div class="form-group col-md-6">
-                    <label asp-for="Campania"></label>
-                    <input asp-for="Campania" class="form-control" />
-                    <span asp-validation-for="Campania" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-6">
-                    <label asp-for="CampaniaPOM"></label>
-                    <input asp-for="CampaniaPOM" class="form-control" />
-                    <span asp-validation-for="CampaniaPOM" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-6">
-                    <label asp-for="ListaPOM"></label>
-                    <input asp-for="ListaPOM" class="form-control" />
-                    <span asp-validation-for="ListaPOM" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-6">
-                    <label asp-for="Tenant"></label>
-                    <input asp-for="Tenant" class="form-control" />
-                    <span asp-validation-for="Tenant" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-6">
-                    <label asp-for="Operacion"></label>
-                    <input asp-for="Operacion" class="form-control" />
-                    <span asp-validation-for="Operacion" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-6">
-                    <label asp-for="Tipo"></label>
-                    <input asp-for="Tipo" class="form-control" />
-                    <span asp-validation-for="Tipo" class="text-danger"></span>
-                </div>
-
-                <!-- Campos booleanos -->
-                @foreach (var field in new[] { "ANI", "DNIS", "Skill", "VDN", "Extension", "Agente", "UCID", "UUI", "Guion", "Observaciones", "Cliente", "Tipificacion", "CTI", "EtiquetaWFO", "CierrePOM", "ActualizaPOM", "Habilitado" })
-                {
-                    <div class="form-group col-md-6">
-                        <div class="form-check">
-                            <input asp-for="@field" class="form-check-input" />
-                            <label class="form-check-label" asp-for="@field">@field</label>
-                        </div>
-                        <span asp-validation-for="@field" class="text-danger"></span>
-                    </div>
-                }
-
-                <div class="form-group col-md-6">
-                    <label asp-for="Historico"></label>
-                    <input asp-for="Historico" class="form-control" />
-                    <span asp-validation-for="Historico" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-6">
-                    <label asp-for="ACWTime"></label>
-                    <input asp-for="ACWTime" class="form-control" />
-                    <span asp-validation-for="ACWTime" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-6">
-                    <label asp-for="SkillPrincipal"></label>
-                    <input asp-for="SkillPrincipal" class="form-control" />
-                    <span asp-validation-for="SkillPrincipal" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-6">
-                    <label asp-for="SkillSecundario"></label>
-                    <input asp-for="SkillSecundario" class="form-control" />
-                    <span asp-validation-for="SkillSecundario" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-6">
-                    <label asp-for="TextoGuion"></label>
-                    <textarea asp-for="TextoGuion" class="form-control"></textarea>
-                    <span asp-validation-for="TextoGuion" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-6">
-                    <label asp-for="Coleccion"></label>
-                    <input asp-for="Coleccion" class="form-control" />
-                    <span asp-validation-for="Coleccion" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-6">
-                    <label asp-for="CampoId"></label>
-                    <input asp-for="CampoId" class="form-control" />
-                    <span asp-validation-for="CampoId" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-6">
-                    <label asp-for="CampoTelefono"></label>
-                    <input asp-for="CampoTelefono" class="form-control" />
-                    <span asp-validation-for="CampoTelefono" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-6">
-                    <label asp-for="CampaignPOMID"></label>
-                    <input asp-for="CampaignPOMID" class="form-control" />
-                    <span asp-validation-for="CampaignPOMID" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-6">
-                    <label asp-for="ContactListID"></label>
-                    <input asp-for="ContactListID" class="form-control" />
-                    <span asp-validation-for="ContactListID" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-6">
-                    <label asp-for="StrategyID"></label>
-                    <input asp-for="StrategyID" class="form-control" />
-                    <span asp-validation-for="StrategyID" class="text-danger"></span>
-                </div>
+    <form id="editForm" asp-action="Edit" method="post">
+        <div class="row">
+            <div class="col-md-6">
+                <label class="form-label">Campaña</label>
+                <input asp-for="Campania" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Campaña POM</label>
+                <input asp-for="CampaniaPOM" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Lista POM</label>
+                <input asp-for="ListaPOM" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Tenant</label>
+                <input asp-for="Tenant" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Operación</label>
+                <input asp-for="Operacion" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Tipo</label>
+                <input asp-for="Tipo" class="form-control" />
             </div>
 
-            <div class="mt-4 d-flex justify-content-end">
-                <button type="button" class="btn btn-secondary mr-2" onclick="window.location.href='@Url.Action("Index", "Campanias")'">
-                    <i class="fas fa-times"></i> Cancelar
-                </button>
-                <button type="button" class="btn btn-success" id="confirmarGuardar">
-                    <i class="fas fa-save"></i> Guardar cambios
-                </button>
+            @* Campos Booleanos con sus labels explícitos *@
+            <div class="col-md-6 form-check m-2">
+                <input asp-for="ANI" class="form-check-input" type="checkbox" />
+                <label asp-for="ANI" class="form-check-label">ANI</label>
             </div>
-        </form>
-    </div>
+            <div class="col-md-6 form-check m-2">
+                <input asp-for="DNIS" class="form-check-input" type="checkbox" />
+                <label asp-for="DNIS" class="form-check-label">DNIS</label>
+            </div>
+            <div class="col-md-6 form-check m-2">
+                <input asp-for="Skill" class="form-check-input" type="checkbox" />
+                <label asp-for="Skill" class="form-check-label">Skill</label>
+            </div>
+            <div class="col-md-6 form-check m-2">
+                <input asp-for="VDN" class="form-check-input" type="checkbox" />
+                <label asp-for="VDN" class="form-check-label">VDN</label>
+            </div>
+            <div class="col-md-6 form-check m-2">
+                <input asp-for="Extension" class="form-check-input" type="checkbox" />
+                <label asp-for="Extension" class="form-check-label">Extensión</label>
+            </div>
+            <div class="col-md-6 form-check m-2">
+                <input asp-for="Agente" class="form-check-input" type="checkbox" />
+                <label asp-for="Agente" class="form-check-label">Agente</label>
+            </div>
+            <div class="col-md-6 form-check m-2">
+                <input asp-for="UCID" class="form-check-input" type="checkbox" />
+                <label asp-for="UCID" class="form-check-label">UCID</label>
+            </div>
+            <div class="col-md-6 form-check m-2">
+                <input asp-for="UUI" class="form-check-input" type="checkbox" />
+                <label asp-for="UUI" class="form-check-label">UUI</label>
+            </div>
+            <div class="col-md-6 form-check m-2">
+                <input asp-for="Guion" class="form-check-input" type="checkbox" />
+                <label asp-for="Guion" class="form-check-label">Guión</label>
+            </div>
+            <div class="col-md-6 form-check m-2">
+                <input asp-for="Observaciones" class="form-check-input" type="checkbox" />
+                <label asp-for="Observaciones" class="form-check-label">Observaciones</label>
+            </div>
+            <div class="col-md-6 form-check m-2">
+                <input asp-for="Cliente" class="form-check-input" type="checkbox" />
+                <label asp-for="Cliente" class="form-check-label">Cliente</label>
+            </div>
+            <div class="col-md-6 form-check m-2">
+                <input asp-for="Tipificacion" class="form-check-input" type="checkbox" />
+                <label asp-for="Tipificacion" class="form-check-label">Tipificación</label>
+            </div>
+            <div class="col-md-6 form-check m-2">
+                <input asp-for="CTI" class="form-check-input" type="checkbox" />
+                <label asp-for="CTI" class="form-check-label">CTI</label>
+            </div>
+            <div class="col-md-6 form-check m-2">
+                <input asp-for="EtiquetaWFO" class="form-check-input" type="checkbox" />
+                <label asp-for="EtiquetaWFO" class="form-check-label">Etiqueta WFO</label>
+            </div>
+            <div class="col-md-6 form-check m-2">
+                <input asp-for="CierrePOM" class="form-check-input" type="checkbox" />
+                <label asp-for="CierrePOM" class="form-check-label">Cierre POM</label>
+            </div>
+            <div class="col-md-6 form-check m-2">
+                <input asp-for="ActualizaPOM" class="form-check-input" type="checkbox" />
+                <label asp-for="ActualizaPOM" class="form-check-label">Actualiza POM</label>
+            </div>
+            <div class="col-md-6 form-check m-2">
+                <input asp-for="Habilitado" class="form-check-input" type="checkbox" />
+                <label asp-for="Habilitado" class="form-check-label">Habilitado</label>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Histórico</label>
+                <input asp-for="Historico" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">ACW Time</label>
+                <input asp-for="ACWTime" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Skill Principal</label>
+                <input asp-for="SkillPrincipal" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Skill Secundario</label>
+                <input asp-for="SkillSecundario" class="form-control" />
+            </div>
+            <div class="col-md-12">
+                <label class="form-label">Texto Guión</label>
+                <textarea asp-for="TextoGuion" class="form-control"></textarea>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Colección</label>
+                <input asp-for="Coleccion" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Campo ID</label>
+                <input asp-for="CampoId" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Campo Teléfono</label>
+                <input asp-for="CampoTelefono" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Campaign POM ID</label>
+                <input asp-for="CampaignPOMID" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Contact List ID</label>
+                <input asp-for="ContactListID" class="form-control" />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Strategy ID</label>
+                <input asp-for="StrategyID" class="form-control" />
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmModal">Guardar</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
 </div>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-    <script>
-        $(document).ready(function () {
-            $('#confirmarGuardar').on('click', function () {
-                Swal.fire({
-                    title: '¿Guardar cambios?',
-                    text: "Esta acción actualizará la campaña en la base de datos.",
-                    icon: 'warning',
-                    background: '#343a40',
-                    color: '#fff',
-                    showCancelButton: true,
-                    confirmButtonColor: '#28a745',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Sí, guardar',
-                    cancelButtonText: 'Cancelar'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $('form').submit();
-                    }
-                });
-            });
-        });
-    </script>
-}
+<!-- Modal de Confirmación -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Confirmar Guardado</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de que deseas guardar los cambios realizados en esta campaña?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" onclick="document.getElementById('editForm').submit();">Sí, guardar</button>
+            </div>
+        </div>
+    </div>
+</div>

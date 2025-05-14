@@ -62,26 +62,49 @@ namespace CampaniasCRUD_NET9.Controllers
         }
 
         // GET: Campanias/Create
+
+        // GET: Campanias/Create
         public IActionResult Create()
         {
             return View();
         }
-
         // POST: Campanias/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Campania,CampaniaPOM,ListaPOM,Tenant,Operacion,Tipo,ANI,DNIS,Skill,VDN,Extension,Agente,UCID,UUI,Guion,Observaciones,Cliente,Tipificacion,CTI,Historico,EtiquetaWFO,CierrePOM,ActualizaPOM,Habilitado,ACWTime,SkillPrincipal,SkillSecundario,TextoGuion,Coleccion,CampoId,CampoTelefono,CampaignPOMID,ContactListID,StrategyID")] Campanias campanias)
+        public async Task<IActionResult> Create(Campanias campania)
         {
+            // Regla 1: Si es tipo Inbound, no debe tener CampaniaPOM ni ListaPOM
+            if (campania.Tipo != null && campania.Tipo.ToLower() == "inbound")
+            {
+                if (!string.IsNullOrWhiteSpace(campania.CampaniaPOM) || !string.IsNullOrWhiteSpace(campania.ListaPOM))
+                {
+                    ModelState.AddModelError("", "Las campañas de tipo 'Inbound' no deben tener valores en Campaña POM ni Lista POM.");
+                }
+            }
+
+            // Regla 2: SkillSecundario solo si es tipo Blending
+            if (campania.Tipo == null || campania.Tipo.ToLower() != "blending")
+            {
+                if (!string.IsNullOrWhiteSpace(campania.SkillSecundario))
+                {
+                    ModelState.AddModelError("", "Solo las campañas del tipo 'Blending' pueden tener Skill Secundario.");
+                }
+            }
+
             if (ModelState.IsValid)
             {
-                _context.Add(campanias);
+                _context.Add(campania);
                 await _context.SaveChangesAsync();
+
+                // Enviar mensaje de éxito para mostrar pop-up
+                TempData["SuccessMessage"] = "¡Campaña creada exitosamente!";
                 return RedirectToAction(nameof(Index));
             }
-            return View(campanias);
+
+            // Si hay errores, se queda en el formulario de creación
+            return View(campania);
         }
+
 
         // GET: Campanias/Edit/5
         public async Task<IActionResult> Edit(int? id)

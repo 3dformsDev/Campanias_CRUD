@@ -1,79 +1,159 @@
 ﻿@model CampaniasCRUD_NET9.Models.Campanias
 
 @{
-    ViewData["Title"] = "Crear campaña";
+    ViewData["Title"] = "Crear Campaña";
 }
 
-<div class="card shadow mb-4">
-    <div class="card-header py-3 bg-dark">
-        <h5 class="m-0 text-white">Editar campaña: <strong class="bg-secondary px-2 rounded">@Model.Campania</strong></h5>
-    </div>
+<h1 class="text-light">Crear Campaña</h1>
 
-    <div class="card-body bg-dark text-white">
-        <form asp-action="Edit" method="post" class="needs-validation" novalidate>
+<hr />
+
+<div class="card bg-dark text-white shadow mb-4">
+    <div class="card-body">
+        <form asp-action="Create">
             <div class="row">
-                @foreach (var prop in typeof(CampaniasCRUD_NET9.Models.Campanias).GetProperties())
+                <!-- Campo Campaña -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Campaña</label>
+                    <input asp-for="Campania" class="form-control" />
+                </div>
+
+                <!-- CampañaPOM -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Campaña POM</label>
+                    <input asp-for="CampaniaPOM" class="form-control" />
+                </div>
+
+                <!-- ListaPOM -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Lista POM</label>
+                    <input asp-for="ListaPOM" class="form-control" />
+                </div>
+
+                <!-- Tenant -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Tenant</label>
+                    <input asp-for="Tenant" class="form-control" />
+                </div>
+
+                <!-- Operacion -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Operación</label>
+                    <input asp-for="Operacion" class="form-control" />
+                </div>
+
+                <!-- Tipo -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Tipo</label>
+                    <input asp-for="Tipo" class="form-control" />
+                </div>
+
+                <!-- Histórico -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Histórico</label>
+                    <input asp-for="Historico" class="form-control" />
+                </div>
+
+                <!-- ACW Time -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">ACW Time</label>
+                    <input asp-for="ACWTime" class="form-control" />
+                </div>
+
+                <!-- Skill Principal -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Skill Principal</label>
+                    <input asp-for="SkillPrincipal" class="form-control" />
+                </div>
+
+                <!-- Skill Secundario -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Skill Secundario</label>
+                    <input asp-for="SkillSecundario" class="form-control" />
+                </div>
+
+                <!-- Texto Guión -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Texto Guión</label>
+                    <input asp-for="TextoGuion" class="form-control" />
+                </div>
+
+                <!-- Colección -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Colección</label>
+                    <input asp-for="Coleccion" class="form-control" />
+                </div>
+
+                <!-- Campo ID -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Campo ID</label>
+                    <input asp-for="CampoId" class="form-control" />
+                </div>
+
+                <!-- Campo Teléfono -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Campo Teléfono</label>
+                    <input asp-for="CampoTelefono" class="form-control" />
+                </div>
+
+                <!-- Campaign POM ID -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Campaign POM ID</label>
+                    <input asp-for="CampaignPOMID" class="form-control" />
+                </div>
+
+                <!-- Contact List ID -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Contact List ID</label>
+                    <input asp-for="ContactListID" class="form-control" />
+                </div>
+
+                <!-- Strategy ID -->
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Strategy ID</label>
+                    <input asp-for="StrategyID" class="form-control" />
+                </div>
+            </div>
+
+            <!-- Checkbox booleans -->
+            <hr />
+            <h5 class="text-light mt-4">Parámetros booleanos</h5>
+
+            <div class="row">
+                @* Lista de campos booleanos *@
+                @{
+                    var booleanFields = new[] {
+                "ANI", "DNIS", "Skill", "VDN", "Extension", "Agente", "UCID", "UUI",
+                "Guion", "Observaciones", "Cliente", "Tipificacion", "CTI",
+                "EtiquetaWFO", "CierrePOM", "ActualizaPOM", "Habilitado"
+                };
+                }
+
+                @foreach (var field in booleanFields)
                 {
-                    if (prop.Name != "Id")
-                    {
-                        var display = prop.GetCustomAttributes(typeof(System.ComponentModel.DataAnnotations.DisplayAttribute), false)
-                        .Cast<System.ComponentModel.DataAnnotations.DisplayAttribute>()
-                        .FirstOrDefault()?.Name ?? prop.Name;
-
-                        <div class="form-group col-md-6">
-                            <label asp-for="@prop.Name">@display</label>
-
-                            @if (prop.PropertyType == typeof(bool) || prop.PropertyType == typeof(bool?))
-                            {
-                                <div class="form-check">
-                                    <input asp-for="@prop.Name" class="form-check-input" type="checkbox" />
-                                    <label class="form-check-label" for="@prop.Name">@display</label>
-                                </div>
-                            }
-                            else
-                            {
-                                <input asp-for="@prop.Name" class="form-control" />
-                            }
-
-                            <span asp-validation-for="@prop.Name" class="text-danger"></span>
+                    <div class="col-md-4 mb-3">
+                        <div class="form-check form-switch">
+                            @Html.CheckBox(field, false, new { @class = "form-check-input", id = field })
+                            <label class="form-check-label text-light" for="@field">
+                                @Html.DisplayName(field)
+                            </label>
                         </div>
-                    }
+                    </div>
                 }
             </div>
 
-            <div class="mt-4 d-flex justify-content-end">
-                <button type="button" class="btn btn-secondary mr-2" onclick="window.location.href='@Url.Action("Index", "Campanias")'">
-                    <i class="fas fa-times"></i> Cancelar
-                </button>
-                <button type="button" class="btn btn-success" id="confirmarGuardar">
-                    <i class="fas fa-save"></i> Guardar cambios
+            <!-- Botones -->
+            <div class="form-group mt-4 d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-secondary">
+                    Cancelar
+                </a>
+
+                <button type="submit" class="btn btn-success" onclick="return confirm('¿Estás seguro de crear esta campaña?')">
+                    Guardar
                 </button>
             </div>
         </form>
     </div>
 </div>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-    <script>
-        $(document).ready(function () {
-            $('#confirmarGuardar').on('click', function () {
-                Swal.fire({
-                    title: '¿Guardar cambios?',
-                    text: "Esta acción actualizará la campaña en la base de datos.",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#28a745',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Sí, guardar',
-                    cancelButtonText: 'Cancelar'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        $('form').submit();
-                    }
-                });
-            });
-        });
-    </script>
-}
 

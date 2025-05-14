@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Mvc.Rendering
+
 @{
     var action = ViewContext.RouteData.Values["action"]?.ToString();
     var controller = ViewContext.RouteData.Values["controller"]?.ToString();
@@ -8,8 +9,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- SweetAlert2 libreria -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -33,21 +34,50 @@
 
     <!-- Page Wrapper -->
     <div id="wrapper">
+
+        @* Sidebar solo en Campanias/Index *@
         @if (mostrarSidebar)
         {
             <!-- Sidebar -->
             <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
+                <!-- Encabezado del Sidebar -->
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                     <div class="sidebar-brand-text mx-3">CAMPAÑAS CRUD</div>
                 </a>
+
                 <hr class="sidebar-divider my-0" />
+
+                <!-- Opción Campañas -->
                 <li class="nav-item active">
                     <a class="nav-link" asp-controller="Campanias" asp-action="Index">
                         <i class="fas fa-fw fa-bullhorn"></i>
                         <span>Campañas</span>
                     </a>
                 </li>
+
+                <hr class="sidebar-divider" />
+
+                <!-- Título decorativo -->
+                <div class="sidebar-heading text-white-50">
+                    Otras Secciones
+                </div>
+
+                <!-- Opciones visuales -->
+                <li class="nav-item">
+                    <a class="nav-link disabled text-white-50" href="#">
+                        <i class="fas fa-fw fa-cogs"></i>
+                        <span>Operaciones</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link disabled text-white-50" href="#">
+                        <i class="fas fa-fw fa-building"></i>
+                        <span>Tenants</span>
+                    </a>
+                </li>
+
             </ul>
         }
 
